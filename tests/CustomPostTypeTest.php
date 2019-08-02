@@ -2,9 +2,9 @@
 
 namespace Brightoak\WordPressTools\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Brightoak\WordPressTools\CustomPostType;
 use Brightoak\WordPressTools\Exceptions\InvalidArgumentException;
-use PHPUnit\Framework\TestCase;
 
 class CustomPostTypeTest extends TestCase
 {
@@ -46,7 +46,7 @@ class CustomPostTypeTest extends TestCase
     {
         $postType = CustomPostType::init('example')
             ->setTaxonomies('category', 'custom')
-            ->setOptions(['show_in_rest' => 1, 'public' => false ]);
+            ->setOptions(['show_in_rest' => 1, 'public' => false]);
         $options = $postType->getOptions();
         $this->assertEquals(1, $options['show_in_rest']);
         $this->assertFalse($options['public']);
@@ -59,6 +59,5 @@ class CustomPostTypeTest extends TestCase
         $this->assertArrayHasKey('labels', $args);
         $this->assertArrayHasKey('supports', $args);
         $this->assertArrayHasKey('taxonomies', $args);
-
     }
 }
