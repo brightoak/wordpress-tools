@@ -72,8 +72,9 @@ class CustomPostType
 
     protected function calculateLabels($singular)
     {
-        $plural = ucfirst($this->stringHelper::plural($singular));
-        $singular = ucfirst($singular);
+        $singular = str_replace('_', ' ' , $singular);
+        $plural = $this->stringHelper::title($this->stringHelper::plural($singular));
+        $singular = $this->stringHelper::title($singular);
         $this->labels = [
             'name' => $plural,
             'singular_name' => $singular,
@@ -108,6 +109,9 @@ class CustomPostType
         if(!empty($this->taxonomies)){
             $args['taxonomies'] = $this->taxonomies;
         }
+        // This is the default
+        $args['rewrite'] = ['slug' => str_replace('_', '-', $this->postType)];
+        // Then we over write it from user provided settings
         $args = array_merge($args, $this->options);
         return $args;
     }
