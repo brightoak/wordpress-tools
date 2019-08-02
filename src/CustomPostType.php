@@ -2,8 +2,8 @@
 
 namespace Brightoak\WordPressTools;
 
-use Brightoak\WordPressTools\Exceptions\InvalidArgumentException;
 use Illuminate\Support\Str;
+use Brightoak\WordPressTools\Exceptions\InvalidArgumentException;
 
 class CustomPostType
 {
@@ -45,6 +45,7 @@ class CustomPostType
     public function setTaxonomies(...$taxonomies)
     {
         $this->taxonomies = $taxonomies;
+
         return $this;
     }
 
@@ -66,36 +67,38 @@ class CustomPostType
     public function setSupports(...$supports)
     {
         $this->supports = $supports;
+
         return $this;
     }
 
     protected function calculateLabels($singular)
     {
-        $singular = str_replace('_', ' ' , $singular);
+        $singular = str_replace('_', ' ', $singular);
         $plural = $this->stringHelper::title($this->stringHelper::plural($singular));
         $singular = $this->stringHelper::title($singular);
         $this->labels = [
             'name' => $plural,
             'singular_name' => $singular,
-            'add_new' => 'Add ' . $singular,
-            'add_new_item' => 'Add New ' . $singular,
+            'add_new' => 'Add '.$singular,
+            'add_new_item' => 'Add New '.$singular,
             'edit' => 'Edit',
-            'edit_item' => 'Edit ' . $singular,
-            'new_item' => 'New ' . $singular,
+            'edit_item' => 'Edit '.$singular,
+            'new_item' => 'New '.$singular,
             'view' => 'View',
-            'view_item' => 'View ' . $singular,
-            'search_items' => 'Search ' . $plural,
-            'not_found' => 'No ' . $plural . ' found',
-            'not_found_in_trash' => 'No ' . $plural . ' found in Trash',
-            'parent' => 'Parent ' . $plural
+            'view_item' => 'View '.$singular,
+            'search_items' => 'Search '.$plural,
+            'not_found' => 'No '.$plural.' found',
+            'not_found_in_trash' => 'No '.$plural.' found in Trash',
+            'parent' => 'Parent '.$plural,
         ];
     }
 
     public function setOptions(array $options = [])
     {
-        if(!empty($options)){
+        if (! empty($options)) {
             $this->options = array_merge($this->options, $options);
         }
+
         return $this;
     }
 
@@ -103,27 +106,27 @@ class CustomPostType
     {
         $args = [];
         $args['labels'] = $this->labels;
-        if(!empty($this->supports)){
+        if (! empty($this->supports)) {
             $args['supports'] = $this->supports;
         }
-        if(!empty($this->taxonomies)){
+        if (! empty($this->taxonomies)) {
             $args['taxonomies'] = $this->taxonomies;
         }
         // This is the default
         $args['rewrite'] = ['slug' => str_replace('_', '-', $this->postType)];
         // Then we over write it from user provided settings
         $args = array_merge($args, $this->options);
+
         return $args;
     }
 
     public function register()
     {
         // function_exists wrapper here simply to make phpunit testing easier
-        if(function_exists('register_post_type')){
+        if (function_exists('register_post_type')) {
             register_post_type($this->postType, $this->getArgs());
         }
+
         return [$this->postType, $this->getArgs()];
     }
-
-
 }
