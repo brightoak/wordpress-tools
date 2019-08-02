@@ -1,4 +1,4 @@
-# Very short description of the package
+# Bright Oak WordPress Tools
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/brightoak/wordpress-custom-post-types.svg?style=flat-square)](https://packagist.org/packages/brightoak/wordpress-custom-post-types)
 [![Build Status](https://img.shields.io/travis/brightoak/wordpress-custom-post-types/master.svg?style=flat-square)](https://travis-ci.org/brightoak/wordpress-custom-post-types)
