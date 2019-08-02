@@ -32,7 +32,6 @@ class CustomPostType
         $this->stringHelper = new Str;
         $this->postType = $this->stringHelper::singular($name);
         $this->calculateLabels($name);
-        return $this;
     }
 
     public static function init(string $name, array $options = null)
