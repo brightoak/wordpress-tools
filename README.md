@@ -17,13 +17,22 @@ composer require brightoak/wordpress-tools
 
 ## Usage
 #### Custom Post Types:
-To create a custom post type called "Example" that supports the title and editor fields:
+Simple example:
 ``` php
 add_action('init', function(){
     CustomPostType::init('example')->setSupports('title', 'editor')->register();
 });
 ```
 
+Elaborate example from https://codex.wordpress.org/Function_Reference/register_post_type
+``` php
+add_action('init', function(){
+    CustomPostType::init('book')
+    ->setOptions('description' => 'Description', 'has_archive' => true])
+    ->setSupports('title', 'editor', 'author', 'thumbnail', 'excerpt', 'comments')
+    ->register();
+});
+```
 ### Testing
 
 ``` bash

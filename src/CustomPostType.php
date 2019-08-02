@@ -27,14 +27,11 @@ class CustomPostType
 
     protected $labels = [];
 
-    private function __construct(string $name, array $options = null)
+    private function __construct(string $name)
     {
         $this->stringHelper = new Str;
         $this->postType = $this->stringHelper::singular($name);
         $this->calculateLabels($name);
-        if ($options) {
-            $this->setOptions($options);
-        }
         return $this;
     }
 
@@ -94,10 +91,12 @@ class CustomPostType
         ];
     }
 
-    public function setOptions(array $options)
+    public function setOptions(array $options = [])
     {
-       $this->options = $options;
-       return $this;
+        if(!empty($options)){
+            $this->options = array_merge($this->options, $options);
+        }
+        return $this;
     }
 
     protected function getArgs() : array
@@ -109,9 +108,7 @@ class CustomPostType
         if(!empty($this->taxonomies)){
             $args['taxonomies'] = $this->taxonomies;
         }
-        if(!empty($this->options)){
-            $args = array_merge($args, $this->options);
-        }
+        $args = array_merge($args, $this->options);
         return $args;
     }
 

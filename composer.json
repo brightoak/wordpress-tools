@@ -1,9 +1,10 @@
 {
     "name": "brightoak/wordpress-tools",
-    "description": "A simpler way to declare custom post types",
+    "description": "A collection of tools for doing WordPress tasks in a modern PHP way.",
     "keywords": [
         "brightoak",
-        "wordpress-custom-post-types"
+        "wordpress-tools",
+        "wordpress"
     ],
     "homepage": "https://github.com/brightoak/wordpress-tools",
     "license": "MIT",

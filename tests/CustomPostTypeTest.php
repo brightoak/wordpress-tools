@@ -42,11 +42,14 @@ class CustomPostTypeTest extends TestCase
     }
 
     /** @test */
-    public function it_allows_you_to_set_options_in_the_constructor()
+    public function it_allows_you_to_set_options()
     {
-        $postType = CustomPostType::init('example', ['show_in_rest' => 1])->setTaxonomies('category', 'custom');
+        $postType = CustomPostType::init('example')
+            ->setTaxonomies('category', 'custom')
+            ->setOptions(['show_in_rest' => 1, 'public' => false ]);
         $options = $postType->getOptions();
         $this->assertEquals(1, $options['show_in_rest']);
+        $this->assertFalse($options['public']);
     }
 
     /** @test */
