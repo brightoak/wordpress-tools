@@ -34,10 +34,10 @@ class CustomPostType
         $this->calculateLabels($name);
     }
 
-    public static function init(string $name, array $options = null)
+    public static function init(string $name)
     {
         if (strlen($name) >= 1 && strlen($name) < 20) {
-            return new self($name, $options);
+            return new self($name);
         }
         throw new InvalidArgumentException('A Custom Post type name must be between 1 and 20 characters.');
     }
@@ -101,6 +101,7 @@ class CustomPostType
 
     protected function getArgs() : array
     {
+        $args = [];
         $args['labels'] = $this->labels;
         if(!empty($this->supports)){
             $args['supports'] = $this->supports;
