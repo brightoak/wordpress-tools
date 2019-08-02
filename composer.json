@@ -1,0 +1,43 @@
+{
+    "name": "brightoak/wordpress-tools",
+    "description": "A simpler way to declare custom post types",
+    "keywords": [
+        "brightoak",
+        "wordpress-custom-post-types"
+    ],
+    "homepage": "https://github.com/brightoak/wordpress-tools",
+    "license": "MIT",
+    "type": "library",
+    "authors": [
+        {
+            "name": "Rory McDaniel",
+            "email": "rory@brightoak.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^7.1",
+        "illuminate/support": "^5.8"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Brightoak\\WordPressTools\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Brightoak\\WordPressTools\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/phpunit",
+        "test-coverage": "vendor/bin/phpunit --coverage-html coverage"
+
+    },
+    "config": {
+        "sort-packages": true
+    }
+}
