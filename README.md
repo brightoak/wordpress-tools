@@ -1,12 +1,9 @@
 # Bright Oak WordPress Tools
-<!--
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/brightoak/ordpress-tools.svg?style=flat-square)](https://packagist.org/packages/brightoak/wordpress-tools)
--->
-[![Build Status](https://img.shields.io/travis/brightoak/wordpress-tools/master.svg?style=flat-square)](https://travis-ci.org/brightoak/wordpress-tools)
-[![Quality Score](https://img.shields.io/scrutinizer/g/wordpress-tools.svg?style=flat-square)](https://scrutinizer-ci.com/g/brightoak/wordpress-tools)
-<!--
+[![Build Status](https://img.shields.io/scrutinizer/build/g/brightoak/wordpress-tools)](https://travis-ci.org/brightoak/wordpress-tools)
+[![Quality Score](https://img.shields.io/scrutinizer/quality/g/brightoak/wordpress-tools?style=flat-square)](https://scrutinizer-ci.com/g/brightoak/wordpress-tools)
 [![Total Downloads](https://img.shields.io/packagist/dt/brightoak/wordpress-tools.svg?style=flat-square)](https://packagist.org/packages/brightoak/wordpress-tools)
--->
+
 
 This is a tool for doing things in WordPress that are often verbose and should be easier.
 
