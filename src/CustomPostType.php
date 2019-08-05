@@ -54,6 +54,7 @@ class CustomPostType
     public function setSingularLabel(string $value)
     {
         $this->singularLabel = $value;
+
         return $this;
     }
 
