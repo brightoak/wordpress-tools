@@ -61,11 +61,12 @@ class CustomPostTypeTest extends TestCase
         $this->assertArrayHasKey('taxonomies', $args);
     }
 
+    /** @test */
     public function it_allows_you_to_set_a_value_for_singular_label()
     {
-        $singularLabel = 'BIG Example';
+        $singularLabel = 'BIG STUFF';
         [$name, $args] = CustomPostType::init('example')->setSupports('title')->setSingularLabel($singularLabel)->register();
         $labels = $args['labels'];
-        $this->assertEquals($singularLabel, $labels['singular']);
+        $this->assertEquals($singularLabel, $labels['singular_name']);
     }
 }

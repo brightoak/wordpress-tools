@@ -25,15 +25,12 @@ class CustomPostType
         'show_ui' => true,
     ];
 
-    protected $labels = [];
-
     protected $singularLabel = null;
 
     private function __construct(string $name)
     {
         $this->stringHelper = new Str;
         $this->postType = $this->stringHelper::singular($name);
-        $this->calculateLabels($name);
     }
 
     public static function init(string $name)
@@ -85,24 +82,28 @@ class CustomPostType
         return $this;
     }
 
-    protected function calculateLabels($singular)
+    protected function calculateLabels($calculatedLabel)
     {
-        if ($singular = $this->getSingularLabel() === null) {
-            $singular = str_replace('_', ' ', $singular);
-            $singular = str_replace('-', ' ', $singular);
+        if($this->getSingularLabel() === null){
+            $singularLabel = str_replace('_', ' ', $calculatedLabel);
+            $singularLabel = str_replace('-', ' ', $singularLabel);
+            $plural = $this->stringHelper::title($this->stringHelper::plural($singularLabel));
+            $singularLabel = $this->stringHelper::title($singularLabel);
+        } else {
+            $singularLabel = $this->getSingularLabel();
+            $plural = $this->stringHelper::plural($singularLabel);
         }
-        $plural = $this->stringHelper::title($this->stringHelper::plural($singular));
-        $singular = $this->stringHelper::title($singular);
-        $this->labels = [
+
+        return [
             'name' => $plural,
-            'singular_name' => $singular,
-            'add_new' => 'Add '.$singular,
-            'add_new_item' => 'Add New '.$singular,
+            'singular_name' => $singularLabel,
+            'add_new' => 'Add '.$singularLabel,
+            'add_new_item' => 'Add New '.$singularLabel,
             'edit' => 'Edit',
-            'edit_item' => 'Edit '.$singular,
-            'new_item' => 'New '.$singular,
+            'edit_item' => 'Edit '.$singularLabel,
+            'new_item' => 'New '.$singularLabel,
             'view' => 'View',
-            'view_item' => 'View '.$singular,
+            'view_item' => 'View '.$singularLabel,
             'search_items' => 'Search '.$plural,
             'not_found' => 'No '.$plural.' found',
             'not_found_in_trash' => 'No '.$plural.' found in Trash',
@@ -122,7 +123,7 @@ class CustomPostType
     protected function getArgs() : array
     {
         $args = [];
-        $args['labels'] = $this->labels;
+        $args['labels'] = $this->calculateLabels($this->postType);
         if (! empty($this->supports)) {
             $args['supports'] = $this->supports;
         }
