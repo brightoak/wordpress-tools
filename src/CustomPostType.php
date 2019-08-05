@@ -27,6 +27,8 @@ class CustomPostType
 
     protected $labels = [];
 
+    protected $singularLabel = null;
+
     private function __construct(string $name)
     {
         $this->stringHelper = new Str;
@@ -47,6 +49,17 @@ class CustomPostType
         $this->taxonomies = $taxonomies;
 
         return $this;
+    }
+
+    public function setSingularLabel(string $value)
+    {
+        $this->singularLabel = $value;
+        return $this;
+    }
+
+    public function getSingularLabel()
+    {
+        return $this->singularLabel;
     }
 
     public function getTaxonomies()
@@ -73,7 +86,7 @@ class CustomPostType
 
     protected function calculateLabels($singular)
     {
-        $singular = str_replace('_', ' ', $singular);
+        $singular = ($this->getSingularLabel()) ?? str_replace('_', ' ', $singular);
         $plural = $this->stringHelper::title($this->stringHelper::plural($singular));
         $singular = $this->stringHelper::title($singular);
         $this->labels = [
