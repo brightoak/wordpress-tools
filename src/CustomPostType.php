@@ -58,7 +58,7 @@ class CustomPostType
         return $this;
     }
 
-    public function getSingularLabel()
+    protected function getSingularLabel()
     {
         return $this->singularLabel;
     }
@@ -87,7 +87,7 @@ class CustomPostType
 
     protected function calculateLabels($singular)
     {
-        if(!$singular = $this->getSingularLabel()){
+        if($singular = $this->getSingularLabel() === null){
             $singular =  str_replace('_', ' ', $singular);
             $singular = str_replace('-', ' ', $singular);
         }
