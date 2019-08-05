@@ -87,8 +87,8 @@ class CustomPostType
 
     protected function calculateLabels($singular)
     {
-        if(!$singular = $this->getSingularLabel()){
-            $singular =  str_replace('_', ' ', $singular);
+        if (! $singular = $this->getSingularLabel()) {
+            $singular = str_replace('_', ' ', $singular);
             $singular = str_replace('-', ' ', $singular);
         }
         $plural = $this->stringHelper::title($this->stringHelper::plural($singular));
