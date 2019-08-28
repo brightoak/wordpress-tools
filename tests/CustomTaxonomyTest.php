@@ -2,8 +2,8 @@
 
 namespace Brightoak\WordPressTools\Tests;
 
-use Brightoak\WordPressTools\CustomTaxonomy;
 use PHPUnit\Framework\TestCase;
+use Brightoak\WordPressTools\CustomTaxonomy;
 use Brightoak\WordPressTools\Exceptions\InvalidArgumentException;
 
 class CustomTaxonomyTest extends TestCase
@@ -32,6 +32,4 @@ class CustomTaxonomyTest extends TestCase
         $this->assertContains('category', $taxonomy->getObjectTypes());
         $this->assertContains('custom', $taxonomy->getObjectTypes());
     }
-
-
 }
