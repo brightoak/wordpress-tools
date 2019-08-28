@@ -46,12 +46,10 @@ class CustomTaxonomy
         return $this;
     }
 
-
     public function getObjectTypes()
     {
         return $this->objectTypes;
     }
-
 
     public function setSingularLabel(string $value)
     {
@@ -65,19 +63,14 @@ class CustomTaxonomy
         return $this->singularLabel;
     }
 
-
-
-
     public function getOptions()
     {
         return $this->options;
     }
 
-
-
     protected function calculateLabels($calculatedLabel)
     {
-        if($this->getSingularLabel() === null){
+        if ($this->getSingularLabel() === null) {
             $singularLabel = str_replace('_', ' ', $calculatedLabel);
             $singularLabel = str_replace('-', ' ', $singularLabel);
             $plural = $this->stringHelper::title($this->stringHelper::plural($singularLabel));
@@ -90,20 +83,20 @@ class CustomTaxonomy
         return [
             'name' => $plural,
             'singular_name' => __($singularLabel, 'brightoak'),
-            'search_items'               => __( "Search $plural", 'brightoak' ),
-            'popular_items'              => __( "Popular $plural", 'brightoak' ),
-            'all_items'                  => __( "All $plural", 'brightoak' ),
+            'search_items'               => __("Search $plural", 'brightoak'),
+            'popular_items'              => __("Popular $plural", 'brightoak'),
+            'all_items'                  => __("All $plural", 'brightoak'),
             'parent_item'                => null,
             'parent_item_colon'          => null,
-            'edit_item'                  => __( "Edit $singularLabel", 'brightoak' ),
-            'update_item'                => __( "Update $singularLabel", 'brightoak' ),
-            'add_new_item'               => __( "Add New $singularLabel", 'brightoak' ),
-            'new_item_name'              => __( "New $singularLabel Name", 'brightoak' ),
-            'separate_items_with_commas' => __( "Separate $plural with commas", 'brightoak' ),
-            'add_or_remove_items'        => __( "Add or remove $plural", 'brightoak' ),
-            'choose_from_most_used'      => __( "Choose from the most used $plural", 'brightoak' ),
-            'not_found'                  => __( "No $plural found.", 'brightoak' ),
-            'menu_name'                  => __( "$plural", 'brightoak' ),
+            'edit_item'                  => __("Edit $singularLabel", 'brightoak'),
+            'update_item'                => __("Update $singularLabel", 'brightoak'),
+            'add_new_item'               => __("Add New $singularLabel", 'brightoak'),
+            'new_item_name'              => __("New $singularLabel Name", 'brightoak'),
+            'separate_items_with_commas' => __("Separate $plural with commas", 'brightoak'),
+            'add_or_remove_items'        => __("Add or remove $plural", 'brightoak'),
+            'choose_from_most_used'      => __("Choose from the most used $plural", 'brightoak'),
+            'not_found'                  => __("No $plural found.", 'brightoak'),
+            'menu_name'                  => __("$plural", 'brightoak'),
         ];
     }
 
